@@ -1,0 +1,11 @@
+### buildspec for Amazon CodeBuild
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - export NPROCS=15 ### Limit parallelism to avoid running out of memory during Cuda kernel compilation.
+      - scl enable devtoolset-9 ./dobuild.sh
+      - export ARCHIVENAME=$(basename $(ls /root/blender-git/build_linux_release/blender-2.93-*-linux-x64.tar.xz))
+      - aws s3api put-object --acl public-read --bucket mbe-patreon-downloads --key blender/custombuilds/2.93/"${ARCHIVENAME}" --body /root/blender-git/build_linux_release/"${ARCHIVENAME}"
+
