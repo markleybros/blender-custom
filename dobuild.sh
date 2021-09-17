@@ -45,7 +45,7 @@ GIT_COMMIT=$(git rev-parse --short HEAD) || _die git rev-parse failed
 _log Compressing archive...
 cd ~/blender-git/build_linux_release/bin || _die change to output directory failed
 mv 2.93 blender-2.93-"${GIT_COMMIT}"-linux-x64 || _die rename output directory failed
-tar cJvf blender-2.93-"${GIT_COMMIT}"-linux-x64.tar.xz blender-2.93-"${GIT_COMMIT}"-linux-x64
+tar cJvf blender-2.93-"${GIT_COMMIT}"-linux-x64.tar.xz blender-2.93-"${GIT_COMMIT}"-linux-x64 || _dir tar failed
 _log Created output archive. $(pwd)/blender-2.93-"${GIT_COMMIT}"-linux-x64.tar.xz
 
 _log All done.
