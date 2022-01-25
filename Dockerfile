@@ -2,7 +2,7 @@ FROM centos:7
 
 RUN yum -y install epel-release
 
-RUN yum -y install awscli patch python3 cmake3 mesa-libGL-devel gcc gcc-c++ git subversion make cmake libX11-devel libXxf86vm-devel libXi-devel libXcursor-devel libXrandr-devel libXinerama-devel libstdc++-static
+RUN yum -y install awscli patch python3 cmake3 mesa-libGL-devel gcc gcc-c++ git subversion make cmake libX11-devel libXxf86vm-devel libXi-devel libXcursor-devel libXrandr-devel libXinerama-devel libstdc++-static wget
 
 RUN alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake3 20 \
     --slave /usr/local/bin/ctest ctest /usr/bin/ctest3 \

@@ -41,7 +41,7 @@ _log Fixing broken freetype...
 cd ~/blender-git
 FREETYPE_VERSION=2.11.0
 FREETYPE_HASH=a45c6b403413abd5706f3582f04c8339d26397c4304b78fa552f2215df64101f
-wget --no-check-certificate "https://download.savannah.gnu.org/releases/freetype/freetype-2.11.0.tar.gz" || _die failed downloading freetype
+wget --no-check-certificate "https://download.savannah.gnu.org/releases/freetype/freetype-${FREETYPE_VERSION}.tar.gz" || _die failed downloading freetype
 echo "${FREETYPE_HASH}  freetype-${FREETYPE_VERSION}.tar.gz" | sha256sum -c || _die freetype hash mismatch
 tar xvf "freetype-${FREETYPE_VERSION}.tar.gz" || _die freetype untar failed
 cd "freetype-${FREETYPE_VERSION}" || _die cd into freetype directory failed
