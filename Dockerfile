@@ -11,8 +11,8 @@ RUN alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake3 20 \
     --family cmake
 
 RUN yum install -y centos-release-scl
-RUN yum install -y devtoolset-9
-RUN echo "source /opt/rh/devtoolset-9/enable" >> /etc/bashrc
+RUN yum install -y devtoolset-11
+RUN echo "source /opt/rh/devtoolset-11/enable" >> /etc/bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 
 RUN yum-config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-rhel7.repo

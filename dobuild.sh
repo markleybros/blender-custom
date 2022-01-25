@@ -36,6 +36,19 @@ mkdir -p ~/blender-git/lib || _die failed to make lib directory
 cd ~/blender-git/lib || _die failed to change to lib directory
 svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64 || _die failed to checkout pre-built libs
 
+# Currently the freetype library included in linux_centos7_x86_64 has an unresolved link-type dependency on brotli.
+_log Fixing broken freetype...
+cd ~/blender-git
+FREETYPE_VERSION=2.11.0
+FREETYPE_HASH=a45c6b403413abd5706f3582f04c8339d26397c4304b78fa552f2215df64101f
+wget --no-check-certificate "https://download.savannah.gnu.org/releases/freetype/freetype-2.11.0.tar.gz" || _die failed downloading freetype
+echo "${FREETYPE_HASH}  freetype-${FREETYPE_VERSION}.tar.gz" | sha256sum -c || _die freetype hash mismatch
+tar xvf "freetype-${FREETYPE_VERSION}.tar.gz" || _die freetype untar failed
+cd "freetype-${FREETYPE_VERSION}" || _die cd into freetype directory failed
+./configure --prefix="${HOME}"/blender-git/lib/linux_centos7_x86_64/freetype --with-brotli=no --enable-static --disable-shared || _die freetype configure failed
+make || _die freetype make failed
+make install || _die freetype make install failed
+
 _log Compiling blender...
 cd ~/blender-git/blender || _die failed to change to build directory
 ### make update || _die failed make update
