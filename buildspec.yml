@@ -2,6 +2,10 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - pip3 install --upgrade pip
+      - pip3 install --upgrade awscli
   build:
     commands:
       - export NPROCS=15 ### Limit parallelism to avoid running out of memory during Cuda kernel compilation.
