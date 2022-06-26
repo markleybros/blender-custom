@@ -34,7 +34,7 @@ patch -p0 <"${BASEPATH}"/D7270.diff || _die patch failed to apply
 _log Downloading precompiled dependencies
 mkdir -p ~/blender-git/lib || _die failed to make lib directory
 cd ~/blender-git/lib || _die failed to change to lib directory
-svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64 || _die failed to checkout pre-built libs
+svn checkout https://svn.blender.org/svnroot/bf-blender/tags/blender-2.93-release/lib/linux_centos7_x86_64 || _die failed to checkout pre-built libs
 
 # Currently the freetype library included in linux_centos7_x86_64 has an unresolved link-type dependency on brotli.
 _log Fixing broken freetype...
